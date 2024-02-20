@@ -264,10 +264,18 @@ export function morph(from, toHtml, options) {
                     let fromKeyNode = fromKeys[toKey]
 
                     if (fromKeyNode) {
-                        // Move "from" key...
-                        fromKeyHoldovers[fromKey] = currentFrom
-                        currentFrom.replaceWith(fromKeyNode)
-                        currentFrom = fromKeyNode
+                        // check if the current node can be removed
+                        if(shouldSkip(removing, currentFrom)) {
+                            // should not be removed, put it in holdovers
+                            fromKeyHoldovers[fromKey] = currentFrom
+                            currentFrom = getNextSibling(from, currentFrom)
+                            continue
+                        } else {
+                            // Move "from" key...
+                            fromKeyHoldovers[fromKey] = currentFrom
+                            currentFrom.replaceWith(fromKeyNode)
+                            currentFrom = fromKeyNode
+                        }
                     } else {
                         // Swap elements with keys...
                         fromKeyHoldovers[fromKey] = currentFrom; // This ";" needs to be here...
