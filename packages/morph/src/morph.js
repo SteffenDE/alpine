@@ -245,7 +245,7 @@ export function morph(from, toHtml, options) {
                     // No "to" key...
                     fromKeyHoldovers[fromKey] = currentFrom; // This ";" needs to be here...
                     currentFrom = addNodeBefore(from, currentTo, currentFrom)
-                    fromKeyHoldovers[fromKey].remove()
+                    // fromKeyHoldovers[fromKey].remove()
                     currentFrom = getNextSibling(from, currentFrom)
                     currentTo = getNextSibling(to, currentTo)
 
@@ -272,7 +272,7 @@ export function morph(from, toHtml, options) {
                         // Swap elements with keys...
                         fromKeyHoldovers[fromKey] = currentFrom; // This ";" needs to be here...
                         currentFrom = addNodeBefore(from, currentTo, currentFrom)
-                        fromKeyHoldovers[fromKey].remove()
+                        // fromKeyHoldovers[fromKey].remove()
                         currentFrom = getNextSibling(from, currentFrom)
                         currentTo = getNextSibling(to, currentTo)
 
